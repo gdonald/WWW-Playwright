@@ -1,0 +1,18 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use JSON::Fast;
+use PlaywrightSupport;
+
+plan 3;
+
+my $request = to-json(%( jsonrpc => '2.0', id => 1, method => 'ping', params => {} ), :!pretty);
+
+my $line = run-sidecar-request($request);
+my %response = from-json($line);
+
+is %response<jsonrpc>, '2.0', 'response uses JSON-RPC 2.0';
+
+is %response<id>, 1, 'response echoes the request id';
+
+is %response<result>, 'pong', 'ping returns pong';

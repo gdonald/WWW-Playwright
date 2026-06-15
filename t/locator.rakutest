@@ -1,0 +1,115 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use PlaywrightSupport;
+
+plan 18;
+
+with-playwright(-> $playwright {
+  my $browser = $playwright.launch;
+
+  # actions
+
+  with-page($browser, -> $page {
+    $page.locator('#go').click;
+
+    is $page.locator('#result').text-content, 'clicked', 'click triggers the button handler';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#name').fill('Ada');
+
+    is $page.locator('#name').input-value, 'Ada', 'fill sets the input value';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#name').fill('');
+    $page.locator('#name').type('Hi');
+
+    is $page.locator('#name').input-value, 'Hi', 'type appends keystrokes to the input';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#name').press('x');
+
+    is $page.locator('#key-result').text-content, 'x', 'press dispatches a key event';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#agree').check;
+
+    is $page.locator('#agree').is-checked, True, 'check ticks the checkbox';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#agree').check;
+    $page.locator('#agree').uncheck;
+
+    is $page.locator('#agree').is-checked, False, 'uncheck clears the checkbox';
+  });
+
+  with-page($browser, -> $page {
+    my @selected = $page.locator('#color').select-option('green');
+
+    is @selected, ['green'], 'select-option returns the chosen values';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#hoverable').hover;
+
+    is $page.locator('#hover-result').text-content, 'hovered', 'hover triggers the mouseover handler';
+  });
+
+  # queries
+
+  with-page($browser, -> $page {
+    is $page.locator('#greeting').text-content, 'Hello, world', 'text-content reads the element text';
+  });
+
+  with-page($browser, -> $page {
+    is $page.locator('#greeting').inner-text, 'Hello, world', 'inner-text reads the rendered text';
+  });
+
+  with-page($browser, -> $page {
+    is $page.locator('#name').get-attribute('type'), 'text', 'get-attribute reads an attribute';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#name').fill('typed');
+
+    is $page.locator('#name').input-value, 'typed', 'input-value reads the current value';
+  });
+
+  with-page($browser, -> $page {
+    is $page.locator('#color option').count, 3, 'count returns the number of matches';
+  });
+
+  with-page($browser, -> $page {
+    is $page.locator('#greeting').is-visible, True, 'is-visible reports a visible element';
+  });
+
+  with-page($browser, -> $page {
+    is $page.locator('#name').is-enabled, True, 'is-enabled reports an enabled element';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#agree').check;
+
+    is $page.locator('#agree').is-checked, True, 'is-checked reports a ticked checkbox';
+  });
+
+  # auto-waiting and chaining
+
+  with-page($browser, -> $page {
+    $page.locator('#greeting').wait-for(state => 'visible');
+
+    is $page.locator('#greeting').is-visible, True, 'wait-for resolves once the state is reached';
+  });
+
+  with-page($browser, -> $page {
+    is $page.locator('body').locator('#greeting').text-content, 'Hello, world',
+      'locators chain through nested selectors';
+  });
+
+  $browser.close;
+});

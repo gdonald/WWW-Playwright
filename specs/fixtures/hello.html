@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hello</title>
+</head>
+<body>
+  <h1 id="greeting">Hello, world</h1>
+
+  <input id="name" type="text" value=""
+    onkeydown="document.getElementById('key-result').textContent = event.key;">
+
+  <button id="go" type="button"
+    onclick="document.getElementById('result').textContent = 'clicked';">Go</button>
+
+  <input id="agree" type="checkbox">
+
+  <select id="color">
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+  </select>
+
+  <div id="hoverable"
+    onmouseover="document.getElementById('hover-result').textContent = 'hovered';">Hover me</div>
+
+  <p id="result"></p>
+
+  <p id="key-result"></p>
+
+  <p id="hover-result"></p>
+</body>
+</html>

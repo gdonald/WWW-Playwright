@@ -1,0 +1,27 @@
+{
+  "name": "WWW::Playwright",
+  "description": "A Raku driver for Playwright via a long-lived Node sidecar",
+  "version": "0.0.1",
+  "api": "1",
+  "perl": "6.d",
+  "authors": ["Greg Donald"],
+  "auth": "zef:gdonald",
+  "license": "Artistic-2.0",
+  "depends": ["JSON::Fast"],
+  "build-depends": [],
+  "test-depends": ["Test", "Test::META", "META6", "URI", "BDD::Behave:auth<zef:gdonald>"],
+  "provides": {
+    "WWW::Playwright": "lib/WWW/Playwright.rakumod",
+    "WWW::Playwright::Sidecar": "lib/WWW/Playwright/Sidecar.rakumod",
+    "WWW::Playwright::Browser": "lib/WWW/Playwright/Browser.rakumod",
+    "WWW::Playwright::Context": "lib/WWW/Playwright/Context.rakumod",
+    "WWW::Playwright::Page": "lib/WWW/Playwright/Page.rakumod",
+    "WWW::Playwright::Locator": "lib/WWW/Playwright/Locator.rakumod",
+    "WWW::Playwright::Exception": "lib/WWW/Playwright/Exception.rakumod"
+  },
+  "resources": [
+    "sidecar/package.json",
+    "sidecar/sidecar.mjs"
+  ],
+  "source-url": "https://github.com/gdonald/WWW-Playwright.git"
+}

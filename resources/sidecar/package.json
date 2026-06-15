@@ -1,0 +1,11 @@
+{
+  "name": "www-playwright-sidecar",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Node sidecar driving Playwright for the Raku WWW::Playwright distribution",
+  "main": "sidecar.mjs",
+  "dependencies": {
+    "playwright": "1.60.0"
+  }
+}

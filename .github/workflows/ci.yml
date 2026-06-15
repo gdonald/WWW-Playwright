@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        stage: [prove6, behave]
+    name: ${{ matrix.stage }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: Raku/setup-raku@v1
+        with:
+          raku-version: 'latest'
+
+      - name: Raku version
+        run: raku --version
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Node version
+        run: node --version
+
+      - name: Cache zef
+        uses: actions/cache@v4
+        with:
+          path: ~/.zef
+          key: zef-ubuntu-latest-${{ hashFiles('META6.json') }}
+          restore-keys: |
+            zef-ubuntu-latest-
+
+      - name: Install Raku dependencies
+        run: zef install --deps-only --/test --test-depends .
+
+      - name: Install prove6
+        if: matrix.stage == 'prove6'
+        run: zef install --/test App::Prove6
+
+      - name: Install BDD::Behave
+        if: matrix.stage == 'behave'
+        run: zef install --/test 'BDD::Behave:auth<zef:gdonald>'
+
+      - name: Install sidecar npm dependencies
+        run: npm install
+        working-directory: resources/sidecar
+
+      - name: Install Chromium browser
+        run: npx playwright install --with-deps chromium
+        working-directory: resources/sidecar
+
+      - name: Run ${{ matrix.stage }}
+        run: ./test.raku ${{ matrix.stage }}

@@ -1,0 +1,28 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use PlaywrightSupport;
+use WWW::Playwright::Exception;
+
+plan 3;
+
+with-sidecar(-> $sidecar {
+  my @promises = (^20).map(-> $n {
+    $sidecar.call('echo', %( value => $n ));
+  });
+
+  my @results = await @promises;
+
+  is @results.map(*<value>), (^20).list, 'concurrent calls correlate each response to its own id';
+
+  is $sidecar.call('ping').result, 'pong', 'ping resolves through the transport';
+
+  my $thrown;
+
+  try {
+    $sidecar.call('no-such-method').result;
+    CATCH { default { $thrown = $_ } }
+  }
+
+  ok $thrown ~~ X::WWW::Playwright, 'a sidecar error surfaces as X::WWW::Playwright';
+});

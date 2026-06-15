@@ -1,0 +1,20 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use PlaywrightSupport;
+
+plan 1;
+
+with-playwright(-> $playwright {
+  my $browser = $playwright.launch;
+  my $context = $browser.new-context;
+  my $page    = $context.new-page;
+
+  my $status = $page.goto(fixture-url('hello.html'));
+
+  $page.close;
+  $context.close;
+  $browser.close;
+
+  is $status, 200, 'navigating to a file:// fixture returns HTTP 200';
+});

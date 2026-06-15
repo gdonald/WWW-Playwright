@@ -1,0 +1,10 @@
+use v6.d;
+use lib 'lib';
+use Test;
+use WWW::Playwright;
+
+plan 2;
+
+is WWW::Playwright.^name, 'WWW::Playwright', 'module loads';
+
+ok WWW::Playwright.dist-version.defined, 'distribution version is defined';

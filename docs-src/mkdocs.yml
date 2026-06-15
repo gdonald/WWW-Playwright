@@ -1,0 +1,19 @@
+site_name: WWW::Playwright
+site_url: https://gdonald.github.io/WWW-Playwright/
+repo_url: https://github.com/gdonald/WWW-Playwright
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Actions: actions.md
+  - Queries: queries.md
+  - Wire contract: wire-contract.md
+  - Configuration: configuration.md
+theme:
+  name: 'material'
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.superfences
+  - admonition
+  - toc:
+      permalink: true
