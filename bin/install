@@ -1,0 +1,18 @@
+#!/usr/bin/env raku
+
+use v6.d;
+use WWW::Playwright::Sidecar;
+
+my $dir = WWW::Playwright::Sidecar.script-path.parent;
+
+say "Installing sidecar npm dependencies in $dir";
+
+my $npm = run('npm', 'install', :cwd($dir.absolute));
+
+exit $npm.exitcode unless $npm.exitcode == 0;
+
+say "Installing the Chromium browser binary";
+
+my $browser = run('npx', 'playwright', 'install', 'chromium', :cwd($dir.absolute));
+
+exit $browser.exitcode;

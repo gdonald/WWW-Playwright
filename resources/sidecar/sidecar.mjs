@@ -174,6 +174,30 @@ const methods = {
 
     return null;
   },
+
+  async screenshot({ handle, path } = {}) {
+    const page = resolve(handle);
+
+    const buffer = await page.screenshot(path ? { path } : {});
+
+    return Array.from(buffer);
+  },
+
+  async 'start-tracing'({ handle } = {}) {
+    const context = resolve(handle);
+
+    await context.tracing.start({ screenshots: true, snapshots: true });
+
+    return null;
+  },
+
+  async 'stop-tracing'({ handle, path } = {}) {
+    const context = resolve(handle);
+
+    await context.tracing.stop(path ? { path } : {});
+
+    return null;
+  },
 };
 
 function send(response) {

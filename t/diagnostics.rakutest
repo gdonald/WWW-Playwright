@@ -1,0 +1,48 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use PlaywrightSupport;
+
+plan 4;
+
+with-playwright(-> $playwright {
+  my $browser = $playwright.launch;
+
+  with-page($browser, -> $page {
+    my $path = $*TMPDIR.add("pw-shot-{$*PID}-{(^999999).pick}.png");
+
+    my $bytes = $page.screenshot(path => $path.absolute);
+
+    is $bytes[0..3].list, (137, 80, 78, 71), 'screenshot returns the PNG bytes';
+
+    ok $path.s > 0, 'screenshot writes a non-empty file at the given path';
+
+    $path.unlink;
+  });
+
+  with-page($browser, -> $page {
+    my $bytes = $page.screenshot;
+
+    ok $bytes.elems > 0, 'screenshot without a path returns the bytes only';
+  });
+
+  {
+    my $path = $*TMPDIR.add("pw-trace-{$*PID}-{(^999999).pick}.zip");
+
+    my $context = $browser.new-context;
+    $context.start-tracing;
+
+    my $page = $context.new-page;
+    $page.goto(fixture-url('hello.html'));
+    $page.locator('#go').click;
+
+    $context.stop-tracing(path => $path.absolute);
+    $context.close;
+
+    ok $path.s > 0, 'tracing writes a non-empty trace zip';
+
+    $path.unlink;
+  }
+
+  $browser.close;
+});

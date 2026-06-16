@@ -14,6 +14,21 @@ method new-page(--> WWW::Playwright::Page) {
   WWW::Playwright::Page.new(:$.sidecar, :handle($page));
 }
 
+method start-tracing(--> Nil) {
+  $.sidecar.call('start-tracing', %( handle => $.handle )).result;
+
+  Nil;
+}
+
+method stop-tracing(Str :$path --> Nil) {
+  my %params = handle => $.handle;
+  %params<path> = $path if $path.defined;
+
+  $.sidecar.call('stop-tracing', %params).result;
+
+  Nil;
+}
+
 method close(--> Nil) {
   $.sidecar.call('close', %( handle => $.handle )).result;
 

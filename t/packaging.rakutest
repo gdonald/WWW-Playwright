@@ -1,0 +1,36 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use WWW::Playwright::Sidecar;
+use WWW::Playwright::Exception;
+
+plan 6;
+
+my $script = WWW::Playwright::Sidecar.script-path;
+
+is $script.basename, 'sidecar.mjs', 'the sidecar script resolves through %?RESOURCES';
+
+ok $script.e, 'the resolved sidecar script exists on disk';
+
+{
+  my $dir = $*TMPDIR.add("pw-pkg-{$*PID}-{(^999999).pick}");
+  $dir.mkdir;
+  $dir.add('sidecar.mjs').spurt('');
+
+  my $sidecar = WWW::Playwright::Sidecar.new(:script-path($dir.add('sidecar.mjs').absolute));
+
+  throws-like { $sidecar.start }, X::WWW::Playwright::DependenciesMissing,
+    'starting without installed npm deps throws DependenciesMissing';
+
+  $dir.add('sidecar.mjs').unlink;
+  $dir.rmdir;
+}
+
+like X::WWW::Playwright::DependenciesMissing.new(resources-dir => '/somewhere').message, /'bin/install'/,
+  'the dependencies-missing error points at bin/install';
+
+ok is-missing-browser-error("browserType.launch: Executable doesn't exist at /x\nRun: npx playwright install"),
+  'a missing-browser Playwright message is classified';
+
+nok is-missing-browser-error('some unrelated locator timeout'),
+  'an unrelated message is not classified as a missing browser';

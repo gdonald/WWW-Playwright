@@ -18,6 +18,15 @@ method locator(Str $selector --> WWW::Playwright::Locator) {
   WWW::Playwright::Locator.new(:$.sidecar, :$handle);
 }
 
+method screenshot(Str :$path --> Buf) {
+  my %params = handle => $.handle;
+  %params<path> = $path if $path.defined;
+
+  my @bytes = $.sidecar.call('screenshot', %params).result.list;
+
+  Buf.new(@bytes);
+}
+
 method close(--> Nil) {
   $.sidecar.call('close', %( handle => $.handle )).result;
 

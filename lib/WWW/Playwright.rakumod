@@ -21,9 +21,22 @@ method ping(--> Str) {
 }
 
 method launch(Bool :$headless = True --> WWW::Playwright::Browser) {
-  my $handle = $.sidecar.call('launch', %(:$headless)).result;
+  my $handle = self!launch-handle(:$headless);
 
   WWW::Playwright::Browser.new(:sidecar($.sidecar), :$handle);
+}
+
+method !launch-handle(Bool :$headless) {
+  CATCH {
+    when X::WWW::Playwright {
+      die X::WWW::Playwright::BrowserNotInstalled.new(detail => .error-message)
+        if is-missing-browser-error(.error-message);
+
+      .rethrow;
+    }
+  }
+
+  return $.sidecar.call('launch', %(:$headless)).result;
 }
 
 method stop(--> Nil) {

@@ -49,13 +49,8 @@ jobs:
         if: matrix.stage == 'behave'
         run: zef install --/test 'BDD::Behave:auth<zef:gdonald>'
 
-      - name: Install sidecar npm dependencies
-        run: npm install
-        working-directory: resources/sidecar
-
-      - name: Install Chromium browser
-        run: npx playwright install --with-deps chromium
-        working-directory: resources/sidecar
+      - name: Install the sidecar npm package and Chromium
+        run: raku -Ilib bin/install
 
       - name: Run ${{ matrix.stage }}
         run: ./test.raku ${{ matrix.stage }}

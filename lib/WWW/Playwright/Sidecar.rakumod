@@ -43,14 +43,24 @@ sub resolve-node(--> Str) {
   $found;
 }
 
-sub sidecar-script(--> Str) {
-  %?RESOURCES<sidecar/sidecar.mjs>.IO.absolute;
+method script-path(--> IO::Path) {
+  %?RESOURCES<sidecar/sidecar.mjs>.IO;
 }
 
 submethod TWEAK() {
   $!node-binary //= resolve-node();
-  $!script-path //= sidecar-script();
+  $!script-path //= self.script-path.absolute;
   $!debug = ?%*ENV<PLAYWRIGHT_DEBUG>;
+}
+
+method !verify-dependencies(--> Nil) {
+  my $playwright = $!script-path.IO.parent.add('node_modules').add('playwright');
+
+  die X::WWW::Playwright::DependenciesMissing.new(
+    resources-dir => $!script-path.IO.parent.absolute,
+  ) unless $playwright.e;
+
+  Nil;
 }
 
 method stderr-lines(--> List) {
@@ -58,6 +68,8 @@ method stderr-lines(--> List) {
 }
 
 method start(--> Nil) {
+  self!verify-dependencies;
+
   $!proc = Proc::Async.new(:w, $!node-binary, $!script-path);
 
   $!debug-handle = $*ERR if $!debug;

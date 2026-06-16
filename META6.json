@@ -21,6 +21,7 @@
   },
   "resources": [
     "sidecar/package.json",
+    "sidecar/package-lock.json",
     "sidecar/sidecar.mjs"
   ],
   "source-url": "https://github.com/gdonald/WWW-Playwright.git"

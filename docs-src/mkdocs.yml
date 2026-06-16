@@ -3,11 +3,19 @@ site_url: https://gdonald.github.io/WWW-Playwright/
 repo_url: https://github.com/gdonald/WWW-Playwright
 nav:
   - Home: index.md
+  - Installing: install.md
   - Getting started: getting-started.md
   - Actions: actions.md
   - Queries: queries.md
+  - Diagnostics: diagnostics.md
+  - API reference:
+    - Browser: api/browser.md
+    - Context: api/context.md
+    - Page: api/page.md
+    - Locator: api/locator.md
   - Wire contract: wire-contract.md
   - Configuration: configuration.md
+  - Troubleshooting: troubleshooting.md
 theme:
   name: 'material'
 markdown_extensions:
