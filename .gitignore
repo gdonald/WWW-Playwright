@@ -5,3 +5,4 @@ resources/sidecar/node_modules/
 *.profraw
 .behave-failures/
 site/
+coverage

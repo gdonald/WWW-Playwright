@@ -278,22 +278,30 @@ async function cleanup() {
   browsers.clear();
 }
 
+const inflight = new Set();
+
 const reader = createInterface({ input: process.stdin });
 
 reader.on('line', (line) => {
-  handle(line);
+  const pending = handle(line).finally(() => inflight.delete(pending));
+
+  inflight.add(pending);
 });
 
-reader.on('close', async () => {
+async function shutdown() {
+  await Promise.allSettled([...inflight]);
+
   await cleanup();
 
   process.exit(0);
+}
+
+reader.on('close', () => {
+  shutdown();
 });
 
 for (const signal of ['SIGINT', 'SIGTERM']) {
-  process.on(signal, async () => {
-    await cleanup();
-
-    process.exit(0);
+  process.on(signal, () => {
+    shutdown();
   });
 }
