@@ -85,6 +85,14 @@ const methods = {
     return response ? response.status() : null;
   },
 
+  url({ handle } = {}) {
+    return resolve(handle).url();
+  },
+
+  async title({ handle } = {}) {
+    return resolve(handle).title();
+  },
+
   locator({ handle, selector } = {}) {
     const root = resolve(handle);
 

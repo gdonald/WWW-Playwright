@@ -1,7 +1,23 @@
 # Query reference
 
-Queries read state from a `Locator`. They return values rather than mutating the
-page.
+Queries read state rather than mutating the page. Most run against a `Locator`;
+`url` and `title` run against the `Page`.
+
+## `url` (Page)
+
+The current page URL.
+
+```raku
+$page.url;        # 'file:///path/to/hello.html'
+```
+
+## `title` (Page)
+
+The document title.
+
+```raku
+$page.title;      # 'Hello'
+```
 
 ## `text-content`
 

@@ -1,0 +1,52 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use PlaywrightSupport;
+use WWW::Playwright::Sidecar;
+use WWW::Playwright::Exception;
+
+plan 5;
+
+my $suffix = "{$*PID}-{(^999999).pick}";
+
+my $checkout = $*TMPDIR.add("pw-checkout-$suffix");
+$checkout.mkdir;
+$checkout.add('sidecar.mjs').spurt(trivial-sidecar-source());
+$checkout.add('package.json').spurt('{}');
+
+ok WWW::Playwright::Sidecar::is-checkout-layout($checkout.add('sidecar.mjs')),
+  'a sidecar next to package.json is a checkout layout';
+
+my $store = $*TMPDIR.add("pw-store-$suffix");
+$store.mkdir;
+$store.add('sidecar.mjs').spurt(trivial-sidecar-source());
+
+my $package = $*TMPDIR.add("pw-pkg-$suffix.json");
+$package.spurt('{"name":"www-playwright-sidecar"}');
+
+my $lock = $*TMPDIR.add("pw-lock-$suffix.json");
+$lock.spurt('{}');
+
+nok WWW::Playwright::Sidecar::is-checkout-layout($store.add('sidecar.mjs')),
+  'a sidecar with no sibling package.json is an installed layout';
+
+my $cache = $*TMPDIR.add("pw-cache-$suffix");
+
+my $home = WWW::Playwright::Sidecar::resolve-home($store.add('sidecar.mjs'), $package, $lock, $cache);
+
+ok $home.add('sidecar.mjs').e && $home.add('package.json').e,
+  'an installed layout materializes the sidecar script and package.json into the resolved home';
+
+$home.add('node_modules').add('playwright').mkdir;
+
+ok WWW::Playwright::Sidecar::has-playwright($home),
+  'the dependency check finds node_modules in the resolved home';
+
+my $sidecar = WWW::Playwright::Sidecar.new(:script-path($home.add('sidecar.mjs').absolute));
+
+lives-ok { $sidecar.start; $sidecar.stop },
+  'start does not raise the missing-dependencies error against an installed layout';
+
+rm-rf($_) for $checkout, $store, $cache;
+$package.unlink;
+$lock.unlink;

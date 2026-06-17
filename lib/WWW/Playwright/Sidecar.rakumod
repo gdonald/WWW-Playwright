@@ -43,8 +43,58 @@ sub resolve-node(--> Str) {
   $found;
 }
 
+our sub is-checkout-layout(IO::Path $script --> Bool) {
+  so $script.parent.add('package.json').e;
+}
+
+our sub has-playwright(IO::Path $home --> Bool) {
+  so $home.add('node_modules').add('playwright').e;
+}
+
+our sub cache-home(Str $version --> IO::Path) {
+  my $base = %*ENV<XDG_CACHE_HOME> ?? %*ENV<XDG_CACHE_HOME>.IO !! $*HOME.add('.cache');
+
+  $base.add('raku-www-playwright').add($version).add('sidecar');
+}
+
+sub copy-resource(IO::Path $source, IO::Path $dest --> Nil) {
+  return without $source;
+  return unless $source.e;
+
+  $source.copy($dest) if !$dest.e || $source.modified > $dest.modified;
+
+  Nil;
+}
+
+our sub materialize-home(IO::Path $home, IO::Path $script, IO::Path $package, IO::Path $lock --> IO::Path) {
+  $home.mkdir;
+
+  copy-resource($script, $home.add('sidecar.mjs'));
+  copy-resource($package, $home.add('package.json'));
+  copy-resource($lock, $home.add('package-lock.json'));
+
+  $home;
+}
+
+our sub resolve-home(IO::Path $script, IO::Path $package, IO::Path $lock, IO::Path $cache --> IO::Path) {
+  return $script.parent if is-checkout-layout($script);
+
+  materialize-home($cache, $script, $package, $lock);
+}
+
+method sidecar-home(--> IO::Path) {
+  my $version = ($?DISTRIBUTION.meta<version> // $?DISTRIBUTION.meta<ver> // 'dev').Str;
+
+  resolve-home(
+    %?RESOURCES<sidecar/sidecar.mjs>.IO,
+    %?RESOURCES<sidecar/package.json>.IO,
+    %?RESOURCES<sidecar/package-lock.json>.IO,
+    cache-home($version),
+  );
+}
+
 method script-path(--> IO::Path) {
-  %?RESOURCES<sidecar/sidecar.mjs>.IO;
+  self.sidecar-home.add('sidecar.mjs');
 }
 
 submethod TWEAK() {
@@ -54,11 +104,11 @@ submethod TWEAK() {
 }
 
 method !verify-dependencies(--> Nil) {
-  my $playwright = $!script-path.IO.parent.add('node_modules').add('playwright');
+  my $home = $!script-path.IO.parent;
 
   die X::WWW::Playwright::DependenciesMissing.new(
-    resources-dir => $!script-path.IO.parent.absolute,
-  ) unless $playwright.e;
+    resources-dir => $home.absolute,
+  ) unless has-playwright($home);
 
   Nil;
 }

@@ -28,10 +28,29 @@ script.
 install        # the bin/install script shipped with the distribution
 ```
 
-`bin/install` runs two steps in the sidecar resources directory:
+`bin/install` runs two steps in the sidecar home directory:
 
 1. `npm install` to fetch the pinned `playwright` package.
 2. `npx playwright install chromium` to download the browser binary.
+
+### Where the sidecar home is
+
+The sidecar home is the directory the sidecar resolves `playwright` from at
+runtime, and it depends on how the distribution is laid out:
+
+- **Repo checkout** (running with `-Ilib`): the home is `resources/sidecar`,
+  where `package.json` and `sidecar.mjs` already live side by side. `bin/install`
+  installs `node_modules` there.
+- **Installed from zef**: resources are stored content-addressed, so the sidecar
+  script and `package.json` are not siblings. `bin/install` materializes them
+  into a per-version cache directory (under `$XDG_CACHE_HOME` or `~/.cache`) and
+  installs `node_modules` there. The sidecar then runs from that cache copy, so
+  Node resolves `playwright` next to it.
+
+Either way, the directory `bin/install` writes to is the same one the transport
+checks at `start`, so a successful `bin/install` clears the
+`DependenciesMissing` error. Run `bin/install` once after each `zef install` or
+upgrade.
 
 ## What happens when a step is missing
 

@@ -1,0 +1,18 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use PlaywrightSupport;
+
+plan 2;
+
+with-playwright(-> $playwright {
+  my $browser = $playwright.launch;
+
+  with-page($browser, -> $page {
+    ok $page.url.ends-with('specs/fixtures/hello.html'), 'url returns the current page URL';
+
+    is $page.title, 'Hello', 'title returns the document title';
+  });
+
+  $browser.close;
+});

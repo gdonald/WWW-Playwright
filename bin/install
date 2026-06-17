@@ -3,7 +3,7 @@
 use v6.d;
 use WWW::Playwright::Sidecar;
 
-my $dir = WWW::Playwright::Sidecar.script-path.parent;
+my $dir = WWW::Playwright::Sidecar.sidecar-home;
 
 say "Installing sidecar npm dependencies in $dir";
 

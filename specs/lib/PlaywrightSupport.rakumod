@@ -7,6 +7,28 @@ sub fixture-url(Str $name --> Str) is export {
   'file://' ~ 'specs/fixtures'.IO.add($name).absolute;
 }
 
+sub rm-rf(IO::Path $path --> Nil) is export {
+  return without $path;
+  return unless $path.e;
+
+  if $path.d {
+    rm-rf($_) for $path.dir;
+    $path.rmdir;
+  }
+  else {
+    $path.unlink;
+  }
+
+  Nil;
+}
+
+sub trivial-sidecar-source(--> Str) is export {
+  q:to/JS/;
+  process.stdin.resume();
+  process.stdin.on('end', () => process.exit(0));
+  JS
+}
+
 sub with-playwright(&block) is export {
   my $playwright = WWW::Playwright.start;
 

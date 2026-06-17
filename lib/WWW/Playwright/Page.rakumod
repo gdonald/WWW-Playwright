@@ -12,6 +12,14 @@ method goto(Str $url --> Int) {
   $.sidecar.call('goto', %( handle => $.handle, :$url )).result;
 }
 
+method url(--> Str) {
+  $.sidecar.call('url', %( handle => $.handle )).result;
+}
+
+method title(--> Str) {
+  $.sidecar.call('title', %( handle => $.handle )).result;
+}
+
 method locator(Str $selector --> WWW::Playwright::Locator) {
   my $handle = $.sidecar.call('locator', %( handle => $.handle, :$selector )).result;
 

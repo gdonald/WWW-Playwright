@@ -11,6 +11,22 @@ Navigates to a URL and returns the HTTP status of the navigation response.
 my $status = $page.goto('file:///path/to/hello.html');   # 200
 ```
 
+## `url(--> Str)`
+
+The current page URL.
+
+```raku
+my $url = $page.url;   # 'file:///path/to/hello.html'
+```
+
+## `title(--> Str)`
+
+The document title.
+
+```raku
+my $title = $page.title;   # 'Hello'
+```
+
 ## `locator(Str $selector --> Locator)`
 
 Returns a [`Locator`](locator.md) for the selector. This is the entry point to
