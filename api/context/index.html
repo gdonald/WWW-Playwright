@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://gdonald.github.io/WWW-Playwright/">
+        <link rel="canonical" href="https://gdonald.github.io/WWW-Playwright/api/context/">
       
       
+        <link rel="prev" href="../browser/">
       
-        <link rel="next" href="install/">
+      
+        <link rel="next" href="../page/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>WWW::Playwright</title>
+        <title>Context - WWW::Playwright</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -46,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wwwplaywright" class="md-skip">
+        <a href="#context" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="WWW::Playwright" class="md-header__button md-logo" aria-label="WWW::Playwright" data-md-component="logo">
+    <a href="../.." title="WWW::Playwright" class="md-header__button md-logo" aria-label="WWW::Playwright" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Context
             
           </span>
         </div>
@@ -190,7 +192,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="WWW::Playwright" class="md-nav__button md-logo" aria-label="WWW::Playwright" data-md-component="logo">
+    <a href="../.." title="WWW::Playwright" class="md-nav__button md-logo" aria-label="WWW::Playwright" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -217,37 +219,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -263,59 +238,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-a-sidecar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why a sidecar
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -327,7 +249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="install/" class="md-nav__link">
+      <a href="../../install/" class="md-nav__link">
         
   
   
@@ -354,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   
@@ -381,7 +303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="actions/" class="md-nav__link">
+      <a href="../../actions/" class="md-nav__link">
         
   
   
@@ -408,7 +330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="queries/" class="md-nav__link">
+      <a href="../../queries/" class="md-nav__link">
         
   
   
@@ -435,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="diagnostics/" class="md-nav__link">
+      <a href="../../diagnostics/" class="md-nav__link">
         
   
   
@@ -459,18 +381,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -491,7 +415,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -509,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/browser/" class="md-nav__link">
+      <a href="../browser/" class="md-nav__link">
         
   
   
@@ -534,10 +458,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="api/context/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -553,6 +504,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#new-page-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new-page(--&gt; Page)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-tracing-nil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        start-tracing(--&gt; Nil)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop-tracingstr-path-nil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stop-tracing(Str :$path --&gt; Nil)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close-nil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close(--&gt; Nil)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -565,7 +580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/page/" class="md-nav__link">
+      <a href="../page/" class="md-nav__link">
         
   
   
@@ -593,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/locator/" class="md-nav__link">
+      <a href="../locator/" class="md-nav__link">
         
   
   
@@ -628,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="wire-contract/" class="md-nav__link">
+      <a href="../../wire-contract/" class="md-nav__link">
         
   
   
@@ -655,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="configuration/" class="md-nav__link">
+      <a href="../../configuration/" class="md-nav__link">
         
   
   
@@ -682,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="troubleshooting/" class="md-nav__link">
+      <a href="../../troubleshooting/" class="md-nav__link">
         
   
   
@@ -729,10 +744,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
+  <a href="#new-page-page" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architecture
+        new-page(--&gt; Page)
       
     </span>
   </a>
@@ -740,10 +755,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-a-sidecar" class="md-nav__link">
+  <a href="#start-tracing-nil" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why a sidecar
+        start-tracing(--&gt; Nil)
       
     </span>
   </a>
@@ -751,10 +766,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#layout" class="md-nav__link">
+  <a href="#stop-tracingstr-path-nil" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Layout
+        stop-tracing(Str :$path --&gt; Nil)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close-nil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close(--&gt; Nil)
       
     </span>
   </a>
@@ -781,42 +807,26 @@
   
 
 
-<h1 id="wwwplaywright">WWW::Playwright<a class="headerlink" href="#wwwplaywright" title="Permanent link">&para;</a></h1>
-<p>A Raku driver for <a href="https://playwright.dev">Playwright</a>. Raku owns the API surface
-and lifecycle. Node owns the browser.</p>
-<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
-<p>Raku spawns a long-lived Node process, the sidecar, that imports the official
-<code>playwright</code> npm package. Raku and the sidecar talk over newline-delimited
-JSON-RPC on stdio.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>+-----------+        NDJSON / stdio        +--------------+        +---------+
-|   Raku    | ---------------------------&gt; | Node sidecar | -----&gt; | Browser |
-| (driver)  | &lt;--------------------------- | (playwright) | &lt;----- |         |
-+-----------+        JSON-RPC 2.0          +--------------+        +---------+
+<h1 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h1>
+<p>A <code>WWW::Playwright::Context</code> is an isolated browser session. Get one from
+<a href="../browser/"><code>Browser.new-context</code></a>.</p>
+<h2 id="new-page-page"><code>new-page(--&gt; Page)</code><a class="headerlink" href="#new-page-page" title="Permanent link">&para;</a></h2>
+<p>Opens a new page in the context and returns a <a href="../page/"><code>Page</code></a>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">my</span> <span class="nv">$page</span> = <span class="nv">$context</span>.<span class="n">new-page</span>;
 </code></pre></div></td></tr></table></div>
-<ul>
-<li>Raku sends one JSON-RPC request per line and reads one response per line.</li>
-<li>The sidecar dispatches each request to Playwright and replies on the same
-  line-buffered stream.</li>
-<li>Browser objects (pages, locators, element handles, contexts) never cross the
-  wire. The sidecar keeps them in a registry and mints opaque string handles
-  (<code>page@1</code>, <code>loc@7</code>) that Raku passes back in later requests.</li>
-</ul>
-<h2 id="why-a-sidecar">Why a sidecar<a class="headerlink" href="#why-a-sidecar" title="Permanent link">&para;</a></h2>
-<p>Playwright ships as a Node library with no stable cross-language RPC surface.
-Rather than reimplement the protocol, this dist drives the real Node package and
-keeps Raku as the orchestration layer. Raku starts the sidecar, feeds it
-requests, correlates responses, and tears it down on exit.</p>
-<h2 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>WWW::Playwright</code> - entry point: start the sidecar, launch a browser, stop.</li>
-<li><code>WWW::Playwright::Sidecar</code> - the transport that owns the Node process.</li>
-<li><code>WWW::Playwright::Browser</code>, <code>::Context</code>, <code>::Page</code>, <code>::Locator</code> - thin Raku
-  wrappers around sidecar handles.</li>
-<li><code>WWW::Playwright::Exception</code> - typed exceptions built from JSON-RPC errors.</li>
-</ul>
+<h2 id="start-tracing-nil"><code>start-tracing(--&gt; Nil)</code><a class="headerlink" href="#start-tracing-nil" title="Permanent link">&para;</a></h2>
+<p>Starts recording a trace (screenshots and DOM snapshots) for the context.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$context</span>.<span class="n">start-tracing</span>;
+</code></pre></div></td></tr></table></div>
+<h2 id="stop-tracingstr-path-nil"><code>stop-tracing(Str :$path --&gt; Nil)</code><a class="headerlink" href="#stop-tracingstr-path-nil" title="Permanent link">&para;</a></h2>
+<p>Stops tracing. With <code>:path</code>, writes the trace zip to that path.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$context</span>.<span class="n">stop-tracing</span>(<span class="nb">path</span> =&gt; <span class="s">&#39;/tmp/trace.zip&#39;</span>);
+</code></pre></div></td></tr></table></div>
+<p>See <a href="../../diagnostics/">Diagnostics</a> for the full tracing workflow.</p>
+<h2 id="close-nil"><code>close(--&gt; Nil)</code><a class="headerlink" href="#close-nil" title="Permanent link">&para;</a></h2>
+<p>Closes the context and its pages.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$context</span>.<span class="nb">close</span>;
+</code></pre></div></td></tr></table></div>
 
 
 
@@ -866,10 +876,10 @@ requests, correlates responses, and tears it down on exit.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

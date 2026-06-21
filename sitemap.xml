@@ -2,26 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://gdonald.github.io/WWW-Playwright/</loc>
-         <lastmod>2026-06-15</lastmod>
+         <lastmod>2026-06-21</lastmod>
     </url>
     <url>
          <loc>https://gdonald.github.io/WWW-Playwright/actions/</loc>
-         <lastmod>2026-06-15</lastmod>
+         <lastmod>2026-06-21</lastmod>
     </url>
     <url>
          <loc>https://gdonald.github.io/WWW-Playwright/configuration/</loc>
-         <lastmod>2026-06-15</lastmod>
+         <lastmod>2026-06-21</lastmod>
+    </url>
+    <url>
+         <loc>https://gdonald.github.io/WWW-Playwright/diagnostics/</loc>
+         <lastmod>2026-06-21</lastmod>
     </url>
     <url>
          <loc>https://gdonald.github.io/WWW-Playwright/getting-started/</loc>
-         <lastmod>2026-06-15</lastmod>
+         <lastmod>2026-06-21</lastmod>
+    </url>
+    <url>
+         <loc>https://gdonald.github.io/WWW-Playwright/install/</loc>
+         <lastmod>2026-06-21</lastmod>
     </url>
     <url>
          <loc>https://gdonald.github.io/WWW-Playwright/queries/</loc>
-         <lastmod>2026-06-15</lastmod>
+         <lastmod>2026-06-21</lastmod>
+    </url>
+    <url>
+         <loc>https://gdonald.github.io/WWW-Playwright/troubleshooting/</loc>
+         <lastmod>2026-06-21</lastmod>
     </url>
     <url>
          <loc>https://gdonald.github.io/WWW-Playwright/wire-contract/</loc>
-         <lastmod>2026-06-15</lastmod>
+         <lastmod>2026-06-21</lastmod>
+    </url>
+    <url>
+         <loc>https://gdonald.github.io/WWW-Playwright/api/browser/</loc>
+         <lastmod>2026-06-21</lastmod>
+    </url>
+    <url>
+         <loc>https://gdonald.github.io/WWW-Playwright/api/context/</loc>
+         <lastmod>2026-06-21</lastmod>
+    </url>
+    <url>
+         <loc>https://gdonald.github.io/WWW-Playwright/api/locator/</loc>
+         <lastmod>2026-06-21</lastmod>
+    </url>
+    <url>
+         <loc>https://gdonald.github.io/WWW-Playwright/api/page/</loc>
+         <lastmod>2026-06-21</lastmod>
     </url>
 </urlset>

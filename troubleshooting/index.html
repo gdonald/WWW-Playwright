@@ -8,26 +8,26 @@
       
       
       
-        <link rel="canonical" href="https://gdonald.github.io/WWW-Playwright/">
+        <link rel="canonical" href="https://gdonald.github.io/WWW-Playwright/troubleshooting/">
       
       
+        <link rel="prev" href="../configuration/">
       
-        <link rel="next" href="install/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>WWW::Playwright</title>
+        <title>Troubleshooting - WWW::Playwright</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -46,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wwwplaywright" class="md-skip">
+        <a href="#troubleshooting" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="WWW::Playwright" class="md-header__button md-logo" aria-label="WWW::Playwright" data-md-component="logo">
+    <a href=".." title="WWW::Playwright" class="md-header__button md-logo" aria-label="WWW::Playwright" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Troubleshooting
             
           </span>
         </div>
@@ -190,7 +190,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="WWW::Playwright" class="md-nav__button md-logo" aria-label="WWW::Playwright" data-md-component="logo">
+    <a href=".." title="WWW::Playwright" class="md-nav__button md-logo" aria-label="WWW::Playwright" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -217,37 +217,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -263,59 +236,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-a-sidecar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why a sidecar
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -327,7 +247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="install/" class="md-nav__link">
+      <a href="../install/" class="md-nav__link">
         
   
   
@@ -354,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -381,7 +301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="actions/" class="md-nav__link">
+      <a href="../actions/" class="md-nav__link">
         
   
   
@@ -408,7 +328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="queries/" class="md-nav__link">
+      <a href="../queries/" class="md-nav__link">
         
   
   
@@ -435,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="diagnostics/" class="md-nav__link">
+      <a href="../diagnostics/" class="md-nav__link">
         
   
   
@@ -509,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/browser/" class="md-nav__link">
+      <a href="../api/browser/" class="md-nav__link">
         
   
   
@@ -537,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/context/" class="md-nav__link">
+      <a href="../api/context/" class="md-nav__link">
         
   
   
@@ -565,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/page/" class="md-nav__link">
+      <a href="../api/page/" class="md-nav__link">
         
   
   
@@ -593,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/locator/" class="md-nav__link">
+      <a href="../api/locator/" class="md-nav__link">
         
   
   
@@ -628,7 +548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="wire-contract/" class="md-nav__link">
+      <a href="../wire-contract/" class="md-nav__link">
         
   
   
@@ -655,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="configuration/" class="md-nav__link">
+      <a href="../configuration/" class="md-nav__link">
         
   
   
@@ -679,10 +599,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="troubleshooting/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -698,6 +645,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#node-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node not found
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npm-dependencies-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        npm dependencies missing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browser-not-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browser not installed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sidecar-crash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sidecar crash
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -729,10 +740,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
+  <a href="#node-not-found" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architecture
+        Node not found
       
     </span>
   </a>
@@ -740,10 +751,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-a-sidecar" class="md-nav__link">
+  <a href="#npm-dependencies-missing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why a sidecar
+        npm dependencies missing
       
     </span>
   </a>
@@ -751,10 +762,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#layout" class="md-nav__link">
+  <a href="#browser-not-installed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Layout
+        Browser not installed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sidecar-crash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sidecar crash
       
     </span>
   </a>
@@ -781,42 +803,35 @@
   
 
 
-<h1 id="wwwplaywright">WWW::Playwright<a class="headerlink" href="#wwwplaywright" title="Permanent link">&para;</a></h1>
-<p>A Raku driver for <a href="https://playwright.dev">Playwright</a>. Raku owns the API surface
-and lifecycle. Node owns the browser.</p>
-<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
-<p>Raku spawns a long-lived Node process, the sidecar, that imports the official
-<code>playwright</code> npm package. Raku and the sidecar talk over newline-delimited
-JSON-RPC on stdio.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>+-----------+        NDJSON / stdio        +--------------+        +---------+
-|   Raku    | ---------------------------&gt; | Node sidecar | -----&gt; | Browser |
-| (driver)  | &lt;--------------------------- | (playwright) | &lt;----- |         |
-+-----------+        JSON-RPC 2.0          +--------------+        +---------+
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
+<h2 id="node-not-found">Node not found<a class="headerlink" href="#node-not-found" title="Permanent link">&para;</a></h2>
+<p>Starting the sidecar throws <code>X::WWW::Playwright::NodeNotFound</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Node binary &#39;node&#39; not found. Install Node, or set PLAYWRIGHT_NODE to its path.
 </code></pre></div></td></tr></table></div>
-<ul>
-<li>Raku sends one JSON-RPC request per line and reads one response per line.</li>
-<li>The sidecar dispatches each request to Playwright and replies on the same
-  line-buffered stream.</li>
-<li>Browser objects (pages, locators, element handles, contexts) never cross the
-  wire. The sidecar keeps them in a registry and mints opaque string handles
-  (<code>page@1</code>, <code>loc@7</code>) that Raku passes back in later requests.</li>
-</ul>
-<h2 id="why-a-sidecar">Why a sidecar<a class="headerlink" href="#why-a-sidecar" title="Permanent link">&para;</a></h2>
-<p>Playwright ships as a Node library with no stable cross-language RPC surface.
-Rather than reimplement the protocol, this dist drives the real Node package and
-keeps Raku as the orchestration layer. Raku starts the sidecar, feeds it
-requests, correlates responses, and tears it down on exit.</p>
-<h2 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>WWW::Playwright</code> - entry point: start the sidecar, launch a browser, stop.</li>
-<li><code>WWW::Playwright::Sidecar</code> - the transport that owns the Node process.</li>
-<li><code>WWW::Playwright::Browser</code>, <code>::Context</code>, <code>::Page</code>, <code>::Locator</code> - thin Raku
-  wrappers around sidecar handles.</li>
-<li><code>WWW::Playwright::Exception</code> - typed exceptions built from JSON-RPC errors.</li>
-</ul>
+<p>The transport could not find <code>node</code> on <code>PATH</code>. Install Node 18 or newer, or point
+<code>PLAYWRIGHT_NODE</code> at the binary:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">PLAYWRIGHT_NODE</span><span class="o">=</span>/opt/node/bin/node<span class="w"> </span>raku<span class="w"> </span>your-script.raku
+</code></pre></div></td></tr></table></div>
+<h2 id="npm-dependencies-missing">npm dependencies missing<a class="headerlink" href="#npm-dependencies-missing" title="Permanent link">&para;</a></h2>
+<p>Starting the sidecar throws <code>X::WWW::Playwright::DependenciesMissing</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Sidecar npm dependencies are missing under &lt;dir&gt;. Run bin/install to install them.
+</code></pre></div></td></tr></table></div>
+<p>The <code>playwright</code> npm package has not been installed next to the sidecar. Run
+<code>bin/install</code>, which runs <code>npm install</code> in the sidecar resources directory.</p>
+<h2 id="browser-not-installed">Browser not installed<a class="headerlink" href="#browser-not-installed" title="Permanent link">&para;</a></h2>
+<p><code>launch</code> throws <code>X::WWW::Playwright::BrowserNotInstalled</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>The Chromium browser binary is not installed. Run bin/install to install it.
+</code></pre></div></td></tr></table></div>
+<p>The npm package is present but the Chromium binary is not. Run <code>bin/install</code>,
+which also runs <code>npx playwright install chromium</code>.</p>
+<h2 id="sidecar-crash">Sidecar crash<a class="headerlink" href="#sidecar-crash" title="Permanent link">&para;</a></h2>
+<p>If the Node process dies mid-run, calls awaiting a response stay unresolved. Set
+<code>PLAYWRIGHT_DEBUG</code> to stream the sidecar's stderr and see what it reported before
+exiting:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">PLAYWRIGHT_DEBUG</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>raku<span class="w"> </span>your-script.raku
+</code></pre></div></td></tr></table></div>
+<p>The captured lines are also available on the transport through
+<code>$sidecar.stderr-lines</code>. See <a href="../configuration/">Configuration</a>.</p>
 
 
 
@@ -866,10 +881,10 @@ requests, correlates responses, and tears it down on exit.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
