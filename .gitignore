@@ -6,3 +6,4 @@ resources/sidecar/node_modules/
 .behave-failures/
 site/
 coverage
+.fezignore
