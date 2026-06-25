@@ -1,7 +1,7 @@
 {
   "name": "WWW::Playwright",
   "description": "A Raku driver for Playwright via a long-lived Node sidecar",
-  "version": "0.0.1",
+  "version": "0.9.0",
   "api": "1",
   "perl": "6.d",
   "authors": ["Greg Donald"],
@@ -9,7 +9,13 @@
   "license": "Artistic-2.0",
   "depends": ["JSON::Fast"],
   "build-depends": [],
-  "test-depends": ["Test", "Test::META", "META6", "URI", "BDD::Behave:auth<zef:gdonald>"],
+  "test-depends": [
+    "Test",
+    "Test::META",
+    "META6",
+    "URI",
+    "BDD::Behave:auth<zef:gdonald>"
+  ],
   "provides": {
     "WWW::Playwright": "lib/WWW/Playwright.rakumod",
     "WWW::Playwright::Sidecar": "lib/WWW/Playwright/Sidecar.rakumod",
