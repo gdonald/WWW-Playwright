@@ -772,6 +772,63 @@
 which makes it the right boundary for one test.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">my</span> <span class="nv">$context</span> = <span class="nv">$browser</span>.<span class="n">new-context</span>;
 </code></pre></div></td></tr></table></div>
+<p>It accepts named options that emulate a device or environment, applied to every
+page in the context:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">my</span> <span class="nv">$context</span> = <span class="nv">$browser</span>.<span class="n">new-context</span>(
+  <span class="n">viewport</span>     =&gt; { <span class="n">width</span> =&gt; <span class="mi">390</span>, <span class="n">height</span> =&gt; <span class="mi">844</span> },
+  <span class="n">is-mobile</span>    =&gt; <span class="nb">True</span>,
+  <span class="n">has-touch</span>    =&gt; <span class="nb">True</span>,
+  <span class="n">color-scheme</span> =&gt; <span class="s">&#39;dark&#39;</span>,
+);
+</code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>viewport</code></td>
+<td><code>{ width, height }</code> of the page in pixels.</td>
+</tr>
+<tr>
+<td><code>user-agent</code></td>
+<td>Override the <code>User-Agent</code> header.</td>
+</tr>
+<tr>
+<td><code>device-scale-factor</code></td>
+<td>Device pixel ratio.</td>
+</tr>
+<tr>
+<td><code>is-mobile</code></td>
+<td>Emulate a mobile device (affects the viewport meta tag).</td>
+</tr>
+<tr>
+<td><code>has-touch</code></td>
+<td>Advertise touch support.</td>
+</tr>
+<tr>
+<td><code>reduced-motion</code></td>
+<td><code>'reduce'</code> or <code>'no-preference'</code>.</td>
+</tr>
+<tr>
+<td><code>color-scheme</code></td>
+<td><code>'light'</code>, <code>'dark'</code>, or <code>'no-preference'</code>.</td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td>BCP 47 locale, e.g. <code>'en-US'</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Only the options you pass are sent; the rest keep Playwright's defaults.</p>
 <h2 id="close-nil"><code>close(--&gt; Nil)</code><a class="headerlink" href="#close-nil" title="Permanent link">&para;</a></h2>
 <p>Closes the browser and every context and page under it.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">$browser</span>.<span class="nb">close</span>;
