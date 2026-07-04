@@ -61,10 +61,10 @@ const methods = {
     return null;
   },
 
-  async 'new-context'({ handle } = {}) {
+  async 'new-context'({ handle, options } = {}) {
     const browser = resolve(handle);
 
-    const context = await browser.newContext();
+    const context = await browser.newContext(options || {});
 
     return mint('context', context);
   },

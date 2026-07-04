@@ -1,0 +1,57 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use PlaywrightSupport;
+use WWW::Playwright;
+
+plan 4;
+
+sub responsive-page($context) {
+  my $page = $context.new-page;
+
+  $page.goto(fixture-url('responsive.html'));
+
+  $page;
+}
+
+with-playwright(-> $playwright {
+  my $browser = $playwright.launch;
+
+  {
+    my $context = $browser.new-context;
+
+    LEAVE $context.close;
+
+    ok responsive-page($context).locator('#wide').is-visible,
+       'no options uses a desktop-width viewport';
+  }
+
+  {
+    my $context = $browser.new-context(viewport => { width => 400, height => 800 });
+
+    LEAVE $context.close;
+
+    ok responsive-page($context).locator('#narrow').is-visible,
+       'a narrow viewport shows the narrow layout';
+  }
+
+  {
+    my $context = $browser.new-context(viewport => { width => 400, height => 800 });
+
+    LEAVE $context.close;
+
+    nok responsive-page($context).locator('#wide').is-visible,
+        'a narrow viewport hides the wide layout';
+  }
+
+  {
+    my $context = $browser.new-context(color-scheme => 'dark');
+
+    LEAVE $context.close;
+
+    ok responsive-page($context).locator('#dark').is-visible,
+       'a dark color scheme shows the dark layout';
+  }
+
+  $browser.close;
+});

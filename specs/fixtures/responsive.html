@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive fixture</title>
+    <style>
+      #wide   { display: block; }
+      #narrow { display: none; }
+
+      @media (max-width: 500px) {
+        #wide   { display: none; }
+        #narrow { display: block; }
+      }
+
+      #light { display: block; }
+      #dark  { display: none; }
+
+      @media (prefers-color-scheme: dark) {
+        #light { display: none; }
+        #dark  { display: block; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wide">wide</div>
+    <div id="narrow">narrow</div>
+    <div id="light">light</div>
+    <div id="dark">dark</div>
+  </body>
+</html>

@@ -42,7 +42,9 @@ $playwright.stop;
 ## API
 
 - `WWW::Playwright` - `start`, `launch(:headless)`, `ping`, `stop`.
-- `Browser` - `new-context`, `close`.
+- `Browser` - `new-context` (with `viewport`, `user-agent`, `is-mobile`,
+  `has-touch`, `reduced-motion`, `color-scheme`, `locale`, and
+  `device-scale-factor` options), `close`.
 - `Context` - `new-page`, `start-tracing`, `stop-tracing(:path)`, `close`.
 - `Page` - `goto`, `locator`, `screenshot(:path)`, `close`.
 - `Locator` - actions (`click`, `fill`, `type`, `press`, `check`, `uncheck`,
