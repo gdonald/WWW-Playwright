@@ -851,12 +851,12 @@ with <code>PLAYWRIGHT_NODE</code> if needed (see <a href="../configuration/">Con
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>zef<span class="w"> </span>install<span class="w"> </span>WWW::Playwright
 </code></pre></div></td></tr></table></div>
 <h2 id="the-npm-package-and-the-browser-binary">The npm package and the browser binary<a class="headerlink" href="#the-npm-package-and-the-browser-binary" title="Permanent link">&para;</a></h2>
-<p>After the Raku distribution is installed, run <code>bin/install</code>. It installs the
+<p>After the Raku distribution is installed, run <code>bin/www-playwright-setup</code>. It installs the
 pinned <code>playwright</code> npm package and the Chromium binary next to the sidecar
 script.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>install<span class="w">        </span><span class="c1"># the bin/install script shipped with the distribution</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>www-playwright-setup<span class="w">    </span><span class="c1"># the setup script shipped with the distribution</span>
 </code></pre></div></td></tr></table></div>
-<p><code>bin/install</code> runs two steps in the sidecar home directory:</p>
+<p><code>bin/www-playwright-setup</code> runs two steps in the sidecar home directory:</p>
 <ol>
 <li><code>npm install</code> to fetch the pinned <code>playwright</code> package.</li>
 <li><code>npx playwright install chromium</code> to download the browser binary.</li>
@@ -866,24 +866,24 @@ script.</p>
 runtime, and it depends on how the distribution is laid out:</p>
 <ul>
 <li><strong>Repo checkout</strong> (running with <code>-Ilib</code>): the home is <code>resources/sidecar</code>,
-  where <code>package.json</code> and <code>sidecar.mjs</code> already live side by side. <code>bin/install</code>
+  where <code>package.json</code> and <code>sidecar.mjs</code> already live side by side. <code>bin/www-playwright-setup</code>
   installs <code>node_modules</code> there.</li>
 <li><strong>Installed from zef</strong>: resources are stored content-addressed, so the sidecar
-  script and <code>package.json</code> are not siblings. <code>bin/install</code> materializes them
+  script and <code>package.json</code> are not siblings. <code>bin/www-playwright-setup</code> materializes them
   into a per-version cache directory (under <code>$XDG_CACHE_HOME</code> or <code>~/.cache</code>) and
   installs <code>node_modules</code> there. The sidecar then runs from that cache copy, so
   Node resolves <code>playwright</code> next to it.</li>
 </ul>
-<p>Either way, the directory <code>bin/install</code> writes to is the same one the transport
-checks at <code>start</code>, so a successful <code>bin/install</code> clears the
-<code>DependenciesMissing</code> error. Run <code>bin/install</code> once after each <code>zef install</code> or
+<p>Either way, the directory <code>bin/www-playwright-setup</code> writes to is the same one the transport
+checks at <code>start</code>, so a successful <code>bin/www-playwright-setup</code> clears the
+<code>DependenciesMissing</code> error. Run <code>bin/www-playwright-setup</code> once after each <code>zef install</code> or
 upgrade.</p>
 <h2 id="what-happens-when-a-step-is-missing">What happens when a step is missing<a class="headerlink" href="#what-happens-when-a-step-is-missing" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If the npm package is not installed, starting the sidecar throws
-  <code>X::WWW::Playwright::DependenciesMissing</code>, pointing back at <code>bin/install</code>.</li>
+  <code>X::WWW::Playwright::DependenciesMissing</code>, pointing back at <code>bin/www-playwright-setup</code>.</li>
 <li>If the browser binary is not installed, <code>launch</code> throws
-  <code>X::WWW::Playwright::BrowserNotInstalled</code>, also pointing at <code>bin/install</code>.</li>
+  <code>X::WWW::Playwright::BrowserNotInstalled</code>, also pointing at <code>bin/www-playwright-setup</code>.</li>
 </ul>
 
 

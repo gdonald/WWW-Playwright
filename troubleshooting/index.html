@@ -814,15 +814,15 @@
 </code></pre></div></td></tr></table></div>
 <h2 id="npm-dependencies-missing">npm dependencies missing<a class="headerlink" href="#npm-dependencies-missing" title="Permanent link">&para;</a></h2>
 <p>Starting the sidecar throws <code>X::WWW::Playwright::DependenciesMissing</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Sidecar npm dependencies are missing under &lt;dir&gt;. Run bin/install to install them.
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Sidecar npm dependencies are missing under &lt;dir&gt;. Run bin/www-playwright-setup to install them.
 </code></pre></div></td></tr></table></div>
 <p>The <code>playwright</code> npm package has not been installed next to the sidecar. Run
-<code>bin/install</code>, which runs <code>npm install</code> in the sidecar resources directory.</p>
+<code>bin/www-playwright-setup</code>, which runs <code>npm install</code> in the sidecar resources directory.</p>
 <h2 id="browser-not-installed">Browser not installed<a class="headerlink" href="#browser-not-installed" title="Permanent link">&para;</a></h2>
 <p><code>launch</code> throws <code>X::WWW::Playwright::BrowserNotInstalled</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>The Chromium browser binary is not installed. Run bin/install to install it.
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>The Chromium browser binary is not installed. Run bin/www-playwright-setup to install it.
 </code></pre></div></td></tr></table></div>
-<p>The npm package is present but the Chromium binary is not. Run <code>bin/install</code>,
+<p>The npm package is present but the Chromium binary is not. Run <code>bin/www-playwright-setup</code>,
 which also runs <code>npx playwright install chromium</code>.</p>
 <h2 id="sidecar-crash">Sidecar crash<a class="headerlink" href="#sidecar-crash" title="Permanent link">&para;</a></h2>
 <p>If the Node process dies mid-run, calls awaiting a response stay unresolved. Set
