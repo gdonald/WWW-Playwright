@@ -50,7 +50,7 @@ jobs:
         run: zef install --/test 'BDD::Behave:auth<zef:gdonald>'
 
       - name: Install the sidecar npm package and Chromium
-        run: raku -Ilib bin/install
+        run: raku -Ilib bin/www-playwright-setup
 
       - name: Run ${{ matrix.stage }}
         run: ./test.raku ${{ matrix.stage }}

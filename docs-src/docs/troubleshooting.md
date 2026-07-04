@@ -20,21 +20,21 @@ PLAYWRIGHT_NODE=/opt/node/bin/node raku your-script.raku
 Starting the sidecar throws `X::WWW::Playwright::DependenciesMissing`:
 
 ```
-Sidecar npm dependencies are missing under <dir>. Run bin/install to install them.
+Sidecar npm dependencies are missing under <dir>. Run bin/www-playwright-setup to install them.
 ```
 
 The `playwright` npm package has not been installed next to the sidecar. Run
-`bin/install`, which runs `npm install` in the sidecar resources directory.
+`bin/www-playwright-setup`, which runs `npm install` in the sidecar resources directory.
 
 ## Browser not installed
 
 `launch` throws `X::WWW::Playwright::BrowserNotInstalled`:
 
 ```
-The Chromium browser binary is not installed. Run bin/install to install it.
+The Chromium browser binary is not installed. Run bin/www-playwright-setup to install it.
 ```
 
-The npm package is present but the Chromium binary is not. Run `bin/install`,
+The npm package is present but the Chromium binary is not. Run `bin/www-playwright-setup`,
 which also runs `npx playwright install chromium`.
 
 ## Sidecar crash

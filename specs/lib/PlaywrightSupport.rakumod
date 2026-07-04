@@ -95,7 +95,7 @@ sub run-sidecar-request(Str $line --> Str) is export {
 
   my $started = $proc.start;
 
-  $proc.say($line);
+  await $proc.say($line);
   $proc.close-stdin;
 
   await $started;

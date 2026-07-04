@@ -26,8 +26,8 @@ ok $script.e, 'the resolved sidecar script exists on disk';
   $dir.rmdir;
 }
 
-like X::WWW::Playwright::DependenciesMissing.new(resources-dir => '/somewhere').message, /'bin/install'/,
-  'the dependencies-missing error points at bin/install';
+like X::WWW::Playwright::DependenciesMissing.new(resources-dir => '/somewhere').message, /'bin/www-playwright-setup'/,
+  'the dependencies-missing error points at bin/www-playwright-setup';
 
 ok is-missing-browser-error("browserType.launch: Executable doesn't exist at /x\nRun: npx playwright install"),
   'a missing-browser Playwright message is classified';

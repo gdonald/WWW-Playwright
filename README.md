@@ -9,10 +9,10 @@ Node owns the browser.
 
 ```bash
 zef install WWW::Playwright
-install              # the bin/install script: npm install + playwright install chromium
+www-playwright-setup    # npm install + playwright install chromium
 ```
 
-`bin/install` fetches the pinned `playwright` npm package and the Chromium binary
+`bin/www-playwright-setup` fetches the pinned `playwright` npm package and the Chromium binary
 next to the sidecar script. Node 18 or newer must be on `PATH` (or pointed at by
 `PLAYWRIGHT_NODE`).
 
@@ -39,18 +39,36 @@ $browser.close;
 $playwright.stop;
 ```
 
-## API
+## Mobile emulation with tracing
 
-- `WWW::Playwright` - `start`, `launch(:headless)`, `ping`, `stop`.
-- `Browser` - `new-context` (with `viewport`, `user-agent`, `is-mobile`,
-  `has-touch`, `reduced-motion`, `color-scheme`, `locale`, and
-  `device-scale-factor` options), `close`.
-- `Context` - `new-page`, `start-tracing`, `stop-tracing(:path)`, `close`.
-- `Page` - `goto`, `locator`, `screenshot(:path)`, `close`.
-- `Locator` - actions (`click`, `fill`, `type`, `press`, `check`, `uncheck`,
-  `select-option`, `hover`), queries (`text-content`, `inner-text`,
-  `get-attribute`, `input-value`, `count`, `is-visible`, `is-enabled`,
-  `is-checked`), `wait-for(:state)`, and `locator` chaining.
+```raku
+use WWW::Playwright;
+
+my $playwright = WWW::Playwright.start;
+my $browser    = $playwright.launch;
+
+my $context = $browser.new-context(
+    viewport   => { width => 390, height => 844 },
+    user-agent => 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)',
+    is-mobile  => True,
+    has-touch  => True,
+);
+
+$context.start-tracing;
+
+my $page = $context.new-page;
+$page.goto('https://example.com');
+
+$page.locator('nav').locator('a').click;      # locator chaining
+
+$context.stop-tracing(path => 'trace.zip');
+
+$context.close;
+$browser.close;
+$playwright.stop;
+```
+
+The full method reference lives in the docs site linked below.
 
 ## Environment
 
@@ -59,8 +77,8 @@ $playwright.stop;
 
 ## Documentation
 
-Full docs are built from `docs-src` with mkdocs.
+Full docs are available at [gdonald.github.io/WWW-Playwright](https://gdonald.github.io/WWW-Playwright/).
 
 ## License
 
-Artistic-2.0
+[Artistic-2.0](https://github.com/gdonald/WWW-Playwright/blob/main/LICENSE)

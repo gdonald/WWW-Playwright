@@ -132,7 +132,22 @@ method start(--> Nil) {
 
   $!exited = $!proc.start;
 
+  $!exited.then(-> $result { self!drain-pending($result.result.exitcode) });
+
   Nil;
+}
+
+method !drain-pending(Int $exit-code) {
+  my @vows;
+
+  $!lock.protect({
+    @vows = %!pending.values;
+    %!pending = %();
+  });
+
+  for @vows -> $vow {
+    $vow.break(X::WWW::Playwright::SidecarExited.new(:$exit-code));
+  }
 }
 
 method !receive(Str $line) {
@@ -182,7 +197,7 @@ method call(Str $method, %params = %() --> Promise) {
     :!pretty,
   );
 
-  $!proc.say($request);
+  await $!proc.say($request);
 
   $promise;
 }

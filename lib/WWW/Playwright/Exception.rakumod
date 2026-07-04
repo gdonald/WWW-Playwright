@@ -26,7 +26,7 @@ class X::WWW::Playwright::DependenciesMissing is Exception {
   has Str $.resources-dir;
 
   method message(--> Str) {
-    "Sidecar npm dependencies are missing under $.resources-dir. Run bin/install to install them.";
+    "Sidecar npm dependencies are missing under $.resources-dir. Run bin/www-playwright-setup to install them.";
   }
 }
 
@@ -34,8 +34,18 @@ class X::WWW::Playwright::BrowserNotInstalled is Exception {
   has Str $.detail;
 
   method message(--> Str) {
-    "The Chromium browser binary is not installed. Run bin/install to install it."
+    "The Chromium browser binary is not installed. Run bin/www-playwright-setup to install it."
       ~ ($.detail ?? "\nPlaywright reported: $.detail" !! '');
+  }
+}
+
+class X::WWW::Playwright::SidecarExited is Exception {
+  has Int $.exit-code;
+
+  method message(--> Str) {
+    "The Playwright sidecar exited"
+      ~ ($.exit-code.defined ?? " with status $.exit-code" !! '')
+      ~ " before answering the request.";
   }
 }
 

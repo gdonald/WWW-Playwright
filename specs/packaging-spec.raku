@@ -30,10 +30,10 @@ describe 'packaging and resource resolution', {
       $dir.rmdir;
     }
 
-    it 'point the error at bin/install', {
+    it 'point the error at bin/www-playwright-setup', {
       my $error = X::WWW::Playwright::DependenciesMissing.new(resources-dir => '/somewhere');
 
-      expect($error.message).to.match(/'bin/install'/);
+      expect($error.message).to.match(/'bin/www-playwright-setup'/);
     }
   }
 
