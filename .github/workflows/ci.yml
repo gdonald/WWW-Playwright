@@ -45,9 +45,9 @@ jobs:
         if: matrix.stage == 'prove6'
         run: zef install --/test App::Prove6
 
-      - name: Install BDD::Behave
-        if: matrix.stage == 'behave'
-        run: zef install --/test 'BDD::Behave:auth<zef:gdonald>'
+      - name: Install from git
+        run: |
+          zef install --/test https://github.com/gdonald/BDD-Behave.git
 
       - name: Install the sidecar npm package and Chromium
         run: raku -Ilib bin/www-playwright-setup
