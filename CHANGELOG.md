@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.9.1 - 2026-07-10
+
+### Added
+
+- `Browser.new-context` named options that emulate a device or environment across every page in the context: `viewport`, `user-agent`, `device-scale-factor`, `is-mobile`, `has-touch`, `reduced-motion`, `color-scheme`, and `locale`. Only the options you pass are sent; the rest keep Playwright's defaults.
+- `X::WWW::Playwright::SidecarExited` exception. When the sidecar process exits before answering, every in-flight call is broken with this error instead of hanging.
+
+### Changed
+
+- Renamed the setup script from `bin/install` to `bin/www-playwright-setup`, and updated the missing-dependency and missing-browser error messages to point at it.
+
 ## v0.9.0 - 2026-06-24
 
 ### Added
