@@ -80,6 +80,12 @@ describe 'locator API', {
 
       expect($page.locator('#hover-result').text-content).to.eq('hovered');
     }
+
+    it 'set-input-files chooses a file for a file input', {
+      $page.locator('#upload').set-input-files('specs/fixtures/upload.txt');
+
+      expect($page.locator('#upload-result').text-content).to.eq('upload.txt');
+    }
   }
 
   context 'queries', {

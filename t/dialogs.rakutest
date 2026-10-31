@@ -1,0 +1,25 @@
+use v6.d;
+use lib 'lib', 'specs/lib';
+use Test;
+use PlaywrightSupport;
+
+plan 2;
+
+with-playwright(-> $playwright {
+  my $browser = $playwright.launch;
+
+  with-page($browser, -> $page {
+    $page.locator('#ask').click;
+
+    is $page.locator('#ask-result').text-content, 'dismissed', 'dismisses a confirm dialog by default';
+  });
+
+  with-page($browser, -> $page {
+    $page.accept-dialogs;
+    $page.locator('#ask').click;
+
+    is $page.locator('#ask-result').text-content, 'accepted', 'accepts a confirm dialog after accept-dialogs';
+  });
+
+  $browser.close;
+});

@@ -3,7 +3,7 @@ use lib 'lib', 'specs/lib';
 use Test;
 use PlaywrightSupport;
 
-plan 18;
+plan 19;
 
 with-playwright(-> $playwright {
   my $browser = $playwright.launch;
@@ -58,6 +58,12 @@ with-playwright(-> $playwright {
     $page.locator('#hoverable').hover;
 
     is $page.locator('#hover-result').text-content, 'hovered', 'hover triggers the mouseover handler';
+  });
+
+  with-page($browser, -> $page {
+    $page.locator('#upload').set-input-files('specs/fixtures/upload.txt');
+
+    is $page.locator('#upload-result').text-content, 'upload.txt', 'set-input-files chooses a file for a file input';
   });
 
   # queries

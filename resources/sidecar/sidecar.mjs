@@ -145,6 +145,12 @@ const methods = {
     return null;
   },
 
+  async 'set-input-files'({ handle, paths } = {}) {
+    await resolve(handle).setInputFiles(paths);
+
+    return null;
+  },
+
   async 'text-content'({ handle } = {}) {
     return resolve(handle).textContent();
   },
@@ -179,6 +185,12 @@ const methods = {
 
   async 'wait-for'({ handle, state } = {}) {
     await resolve(handle).waitFor(state ? { state } : undefined);
+
+    return null;
+  },
+
+  'accept-dialogs'({ handle } = {}) {
+    resolve(handle).on('dialog', (dialog) => dialog.accept());
 
     return null;
   },

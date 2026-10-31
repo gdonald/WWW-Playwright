@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `Locator.set-input-files(*@paths)` chooses files for a file input. Relative paths resolve against the current directory.
+- `Page.accept-dialogs` accepts every `alert`, `confirm`, and `prompt` dialog the page opens from then on. Without it, Playwright dismisses them, so a `confirm` returns false.
+
 ## v0.9.1 - 2026-07-10
 
 ### Added

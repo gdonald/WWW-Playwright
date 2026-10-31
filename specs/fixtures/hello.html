@@ -24,10 +24,20 @@
   <div id="hoverable"
     onmouseover="document.getElementById('hover-result').textContent = 'hovered';">Hover me</div>
 
+  <input id="upload" type="file"
+    onchange="document.getElementById('upload-result').textContent = this.files[0].name;">
+
+  <button id="ask" type="button"
+    onclick="document.getElementById('ask-result').textContent = confirm('Proceed?') ? 'accepted' : 'dismissed';">Ask</button>
+
   <p id="result"></p>
 
   <p id="key-result"></p>
 
   <p id="hover-result"></p>
+
+  <p id="upload-result"></p>
+
+  <p id="ask-result"></p>
 </body>
 </html>

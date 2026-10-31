@@ -26,6 +26,12 @@ method locator(Str $selector --> WWW::Playwright::Locator) {
   WWW::Playwright::Locator.new(:$.sidecar, :$handle);
 }
 
+method accept-dialogs(--> Nil) {
+  $.sidecar.call('accept-dialogs', %( handle => $.handle )).result;
+
+  Nil;
+}
+
 method screenshot(Str :$path --> Buf) {
   my %params = handle => $.handle;
   %params<path> = $path if $path.defined;

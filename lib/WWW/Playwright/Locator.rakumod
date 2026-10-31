@@ -30,6 +30,12 @@ method select-option(Str $value --> List) {
   self!invoke('select-option', :$value).List;
 }
 
+method set-input-files(*@paths --> Nil) {
+  self!invoke('set-input-files', paths => @paths.map(*.IO.absolute).List);
+
+  Nil;
+}
+
 method text-content(--> Str)        { self!invoke('text-content') }
 method inner-text(--> Str)          { self!invoke('inner-text') }
 method get-attribute(Str $name)     { self!invoke('get-attribute', :$name) }
