@@ -1,4 +1,3 @@
-use lib 'lib';
 use BDD::Behave;
 use WWW::Playwright;
 

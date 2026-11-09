@@ -1,4 +1,3 @@
-use lib 'lib', 'specs/lib';
 use BDD::Behave;
 use PlaywrightSupport;
 use WWW::Playwright::Sidecar;
